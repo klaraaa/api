@@ -1,0 +1,31 @@
+students/11/courses/3
+course/3
+
+alla studenter
+/students
+enskild student
+/students/id
+	enskild students alla kurser
+	students/id/course
+	enskild students betyg i enskild kurs
+	studnets/id/course/id/grade
+alla kurser
+enskild kurs
+	alla studenter i enskild kurs
+
+
+/grades/
+
+GET /courses/***/grades
+
+GET /students/***/  
+	>> Hämtar info om en student
+
+GET /students/***/grades 
+	>> Hämtar alla betyg för en student
+
+GET /students/***/grades || courseID = *** 
+	>> Hämta betyg i en viss kurs för en viss student
+
+GET /students/***/courses/***/grades
+	>> Hämta betyg i en viss kurs för en viss student
