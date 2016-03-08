@@ -1,0 +1,41 @@
+Navigating hierarchy for all get functions:
+
+GET	/grades/
+	- Gets all grades
+
+GET	/grades/1/
+	- Gets a single grade based on a grade id
+
+
+
+GET	/students/
+	- Gets all students
+
+GET	/students/1/
+	- Gets a single student based on a student id
+
+GET	/students/1/courses/
+	- Gets all courses for single student
+
+GET	/students/1/courses/1/
+	- Gets a single course for a single student
+
+GET	/students/1/courses/1/grades
+	- Gets the grade for a single students specific course
+
+
+
+GET	/courses/
+	- Gets all courses
+
+GET	/courses/1/
+	- Gets a single course based on a course id
+
+GET	/courses/1/students/
+	- Gets all students in a single course
+
+GET	/courses/1/students/1/
+	- Gets a single student in a single course
+
+GET	/courses/1/students/1/grades
+	- Gets the grade in a specific course for a single student
