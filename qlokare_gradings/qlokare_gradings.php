@@ -1,4 +1,109 @@
 <?php
+/*
+Plugin Name: Test Plugin
+Plugin URI: http://www.qlok.se
+Description: The best plugin in the world!
+Author: Tobias Landén
+Version: 1.0
+Author URI: http://www.qlok.se
+*/
+
+function qlokare_gradings_getcolor(){
+	return get_option('qlokare_gradings_color');
+}
+
+
+function qlokare_gradings_admin_page(){
+	if($_POST['qlokare_gradings_changecolor_form'] == 'true'){
+		// om formuläret är postat
+		$color = $_POST['qlokare_gradings_color']; // bör tvättas och kollas!
+		update_option('qlokare_gradings_color', $color);
+	}else{
+		// om sidan laddas utan att formuläret är postat
+		$color = get_option('qlokare_gradings_color');
+	}
+
+	echo "<div class='wrap'>";
+	echo "<h2>" . __("Qlokare Gradings", 'qlokare_gradings') . "</h2>";
+	echo "<hr>";
+	echo "
+		<form method='post' action =''>
+			<input type='text' name='qlokare_gradings_color' value='$color'>
+			<input type='submit' value='" . __("Update settings", "qlokare_gradings") . "'>
+			<input type='hidden' name='qlokare_gradings_changecolor_form' value='true'>
+		</form>
+	";
+	echo '</div>
+	<div>
+		<form method="post" action="">
+			<p>Get:</p>
+			<label for="student_id">Student:</label>
+			<input type="text" name="student_id">
+			<label for="course_id">Course:</label>
+			<input type="text" name="course_id">
+			<input type="hidden" name="getGrade"></input>
+			<input type="submit">
+		</form>
+		<form method="post" action="">
+		<p>New Grade Student in Course:</p>
+			<label for="student">Student:</label>
+			<input type="text" name="student_id">
+			<label for="course">Course:</label>
+			<input type="text" name="course_id">
+			<label for="grade">Grade:</label>
+			<input type="text" name="grade">
+			<input type="hidden" name="gradeStudent"></input>
+			<input type="submit">
+		</form>
+		<form method="post" action="">
+			<p>Update grade for student in course:</p>
+			<label for="id">Grade id:</label>
+			<input type="text" name="id">
+			<label for="student">Student:</label>
+			<input type="text" name="student_id">
+			<label for="course">Course:</label>
+			<input type="text" name="course_id">
+			<label for="grade">Grade:</label>
+			<input type="text" name="grade">
+			<input type="hidden" name="updateGrade"></input>
+			<input type="submit">
+		</form>
+		<form method="post" action="">
+			<p>Delete: </p>
+			<label for="id">ID:</label>
+			<input type	="text" name="id">
+			<input type="hidden" name="deleteGrade"></input>
+			<input type="submit">
+		</form>
+	</div>
+	<div>';
+			if (isset($_POST)) {
+				$respons = requestAPI();
+				var_dump($respons);
+				// FOR USER 
+	//if sats
+		//respons status okej
+		//html fedback
+		//else
+			//html fedback
+			}
+		
+	echo '</div>';
+}
+
+function qlokare_gradings_admin_menu(){
+	add_options_page("Qlokare Gradings", "Qlokare Gradings", 1, "qlokare_gradings", 'qlokare_gradings_admin_page');
+}
+
+add_action('admin_menu', 'qlokare_gradings_admin_menu');
+
+
+
+
+
+
+
+// _____________ API CLIENT: ______________
 
 function requestAPI(){
 
@@ -105,67 +210,4 @@ curl_close($ch);
 return $respons;
 }
 
-?><!DOCTYPE html>
-<html>
-<head>
-	<title>Sök-formulär</title>
-</head>
-<body>
-<div>
-	<form method="post" action="">
-		<p>Get:</p>
-		<label for="student_id">Student:</label>
-		<input type="text" name="student_id">
-		<label for="course_id">Course:</label>
-		<input type="text" name="course_id">
-		<input type="hidden" name="getGrade"></input>
-		<input type="submit">
-	</form>
-	<form method="post" action="">
-	<p>New Grade Student in Course:</p>
-		<label for="student">Student:</label>
-		<input type="text" name="student_id">
-		<label for="course">Course:</label>
-		<input type="text" name="course_id">
-		<label for="grade">Grade:</label>
-		<input type="text" name="grade">
-		<input type="hidden" name="gradeStudent"></input>
-		<input type="submit">
-	</form>
-	<form method="post" action="">
-		<p>Update grade for student in course:</p>
-		<label for="id">Grade id:</label>
-		<input type="text" name="id">
-		<label for="student">Student:</label>
-		<input type="text" name="student_id">
-		<label for="course">Course:</label>
-		<input type="text" name="course_id">
-		<label for="grade">Grade:</label>
-		<input type="text" name="grade">
-		<input type="hidden" name="updateGrade"></input>
-		<input type="submit">
-	</form>
-	<form method="post" action="">
-		<p>Delete: </p>
-		<label for="id">ID:</label>
-		<input type	="text" name="id">
-		<input type="hidden" name="deleteGrade"></input>
-		<input type="submit">
-	</form>
-</div>
-<div>
-	<?php
-		if (isset($_POST)) {
-			$respons = requestAPI();
-			var_dump($respons);
-			// FOR USER 
-//if sats
-	//respons status okej
-	//html fedback
-	//else
-		//html fedback
-		}
-	?>
-</div>
-</body>
-</html>
+?>
