@@ -65,7 +65,7 @@ class students{
 			$students[] = $item;
 		}
 		
-		return json_encode($students);
+		return $students;
 	}
 
 
@@ -85,7 +85,7 @@ class students{
 		$result = $db->query($query);
 		$item = $result->fetch_assoc();
 		
-		return json_encode($item);
+		return $item;
 	}
 
 
@@ -130,7 +130,7 @@ class students{
 			$students[] = $item;
 		}
 		
-		return json_encode($students);
+		return $students;
 	}
 
 
@@ -148,7 +148,7 @@ class students{
 		$result = $db->query($query);
 		$item = $result->fetch_assoc();
 		
-		return json_encode($item);
+		return $item;
 	}
 
 }//Close class

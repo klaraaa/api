@@ -1,34 +1,53 @@
 <?php
+//Wordpress security for plugin:
+//defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 $outputHTML = "";
 
-if (isset($_POST['gradeStudent'])) {
-	echo $outputHTML = postGrade();
+
+
+function requestAPI(){
+
+	if (isset($_POST['gradeStudent'])) {
+		$respons = postGrade();
+	}
+
+	elseif (isset($_POST['updateGrade'])) {
+		$respons = putGrade();
+	}
+
+	elseif (isset($_POST['deleteGrade'])) {
+		$respons = deleteGrade();
+	}
+
+	elseif (isset($_POST['getGrade'])) {
+		$respons = getGrade();
+	}
+	else {
+		$respons =  "Send one of the forms";
+	}
+	return $respons;
 }
 
-if (isset($_POST['updateGrade'])) {
-	echo $outputHTML = putGrade();
-}
 
-if (isset($_POST['deleteGrade'])) {
-	echo $outputHTML = deleteGrade();
-}
-
-if (isset($_GET['getGrade'])) {
-	echo $outputHTML = getGrade();
-}
 
 function getGrade(){
-	$data = $_GET;
-	// kollar databasen genom fråga till API:
-	$json = call("http://192.168.33.14/api/?/grades/", "get", $data);
-	// $outputHTML = getHTML($json);
-	// return $outputHTML;
+	//Choose data source from form
+	$data = $_POST;
+
+	//Call API with URL, HTTP method and data
+	$json = call("http://192.168.33.14/api/?/courses/".$data['course_id']."/students/".$data['student_id']."/grades", "get", $data);
+
+	//Return respons
+	$respons = json_decode($json);
+	return $respons;
 }
 
 function postGrade(){
 	$data = $_POST;
-	// kollar databasen genom fråga till API:
-	echo $json = call("http://192.168.33.14/api/?/grades/", "post", $data);
+	//Call API with URL, HTTP method and data
+	$json = call("http://192.168.33.14/api/?/grades/", "post", $data);
+	$outputHTML = getHTML($json);
+	return $outputHTML;
 }
 
 function putGrade(){
@@ -36,8 +55,12 @@ function putGrade(){
 	// kollar databasen genom fråga till API:
 	if(empty($data)) {
 		$json = call("http://192.168.33.14/api/?/grades/", "get", $data);
+		$outputHTML = getHTML($json);
+		return $outputHTML;
 	}else{
-		echo $json = call("http://192.168.33.14/api/?/grades/", "put", $data);
+		$json = call("http://192.168.33.14/api/?/grades/", "put", $data);
+		$outputHTML = getHTML($json);
+		return $outputHTML;
 	}
 }
 
@@ -46,26 +69,13 @@ function deleteGrade(){
 	// kollar databasen genom fråga till API:
 	if(empty($data)) {
 		$json = call("http://192.168.33.14/api/?/grades/", "get", $data);
+		$outputHTML = getHTML($json);
+		return $outputHTML;
 	}else{
-		echo $json = call("http://192.168.33.14/api/?/grades/", "delete", $data);
+		$json = call("http://192.168.33.14/api/?/grades/", "delete", $data);
+		$outputHTML = getHTML($json);
+		return $outputHTML;
 	}
-}
-
-function getHTML($json) {
-	$html = "<table>";
-	$arr = json_decode($json);
-	var_dump($arr);
-	foreach($arr as $row) {
-		$html .= "<tr>";
-		foreach($row as $col) {
-			$html .= "<td>";
-			$html .= $col;
-			$html .= "</td>";
-		}
-		$html .= "</tr>";
-	}
-	$html .= "</table>";
-	return $html;
 }
 
 function call($url, $method = "get", $data = []){
@@ -80,22 +90,24 @@ switch ($method) {
 		curl_setopt($ch, CURLOPT_POST, 1);
 		//har ska man ändra method baserat på vilken http-metod som angivits.
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-		break;
-	case 'put':
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT"); // note the PUT here
-
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 	break;
-	case 'delete':
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
-		break;
+	case 'put':
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+	break;
+
+	case 'delete':
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+	break;
 }
-$output = curl_exec($ch); 
+echo $respons = curl_exec($ch); 
 curl_close($ch);
 
-return $output;
+return $respons;
 }
 
 ?><!DOCTYPE html>
@@ -105,19 +117,21 @@ return $output;
 </head>
 <body>
 <div>
-	<form method="get" action="">
+	<form method="post" action="">
 		<p>Get:</p>
-		<label for="grade">Grade:</label>
-		<input type="text" name="grade">
+		<label for="student_id">Student:</label>
+		<input type="text" name="student_id">
+		<label for="course_id">Course:</label>
+		<input type="text" name="course_id">
 		<input type="hidden" name="getGrade"></input>
 		<input type="submit">
 	</form>
 	<form method="post" action="">
-	<p>Grade Student in Course:</p>
+	<p>New Grade Student in Course:</p>
 		<label for="student">Student:</label>
-		<input type="text" name="student">
+		<input type="text" name="student_id">
 		<label for="course">Course:</label>
-		<input type="text" name="course">
+		<input type="text" name="course_id">
 		<label for="grade">Grade:</label>
 		<input type="text" name="grade">
 		<input type="hidden" name="gradeStudent"></input>
@@ -125,25 +139,38 @@ return $output;
 	</form>
 	<form method="post" action="">
 		<p>Update grade for student in course:</p>
+		<label for="id">Grade id:</label>
+		<input type="text" name="id">
 		<label for="student">Student:</label>
-		<input type="text" name="student">
+		<input type="text" name="student_id">
 		<label for="course">Course:</label>
-		<input type="text" name="course">
+		<input type="text" name="course_id">
 		<label for="grade">Grade:</label>
 		<input type="text" name="grade">
 		<input type="hidden" name="updateGrade"></input>
 		<input type="submit">
 	</form>
-		<form method="post" action="">
+	<form method="post" action="">
 		<p>Delete: </p>
 		<label for="id">ID:</label>
-		<input type="text" name="id">
+		<input type	="text" name="id">
 		<input type="hidden" name="deleteGrade"></input>
 		<input type="submit">
 	</form>
 </div>
 <div>
-	<?php echo $outputHTML; ?>
+	<?php
+		if (isset($_POST)) {
+			$respons = requestAPI();
+			echo $respons;
+			// FOR USER 
+//if sats
+	//respons status okej
+	//html fedback
+	//else
+		//html fedback
+		}
+	?>
 </div>
 </body>
 </html>

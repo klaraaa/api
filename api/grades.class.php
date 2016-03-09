@@ -30,7 +30,7 @@ class grades{
 		$result = $db->query($query);
 		$item = $result->fetch_assoc();
 		
-		return json_encode($item);
+		return $item;
 	}
 
 	private function getJSONWithoutParent($url_parts) {
@@ -43,6 +43,8 @@ class grades{
 	}
 
 	private function getGrades() {
+		$db = DB::getInstance();
+
 		$query = "
 			SELECT *
 			FROM grades
@@ -53,11 +55,12 @@ class grades{
 			$grades[] = $item;
 		}
 		
-		return json_encode($grades);
+		return $grades;
 	}
 
 
 	private function getSingleGrade($url_parts) {
+		$db = DB::getInstance();
 		$id = array_shift($url_parts);
 		$cleanId = $db->real_escape_string($id); 
 		$this->id = $cleanId;
@@ -70,10 +73,10 @@ class grades{
 		$result = $db->query($query);
 		$item = $result->fetch_assoc();
 		
-		return json_encode($item);
+		return $item;
 	}
 	
-//POST fungerar
+
 	public function post($url_parts, $data){
 		$db = DB::getInstance();
 
@@ -92,40 +95,32 @@ class grades{
 		}else{
 			$respons = ['status' => 'fail post'];
 		}
-		echo json_encode($respons);
+		return $respons;
 	}
 
-//PUT fungerar
+
 	public function put($url_parts, $data){
 		$db = DB::getInstance();
 
-		$fields = ['student_id', 'course_id', 'grade'];
-
-		foreach($fields as $field){
-			if(isset($data[$field])){
-				$sql_parts[] = $field . " = "."'".$db->real_escape_string($data[$field])."'";
-			}
-		} 	
-
-		$update_fields = implode(',',$sql_parts);	
 		$id = $db->real_escape_string($data['id']); 
+		$student = $db->real_escape_string($data['student_id']);
+		$course = $db->real_escape_string($data['course_id']);
+		$grade = $db->real_escape_string($data['grade']);
 
 		$query = "
 			UPDATE grades 
-			SET $update_fields
-			WHERE id = $id
-			";
+			SET student_id=$student, course_id=$course, grade='".$grade."'
+			WHERE id=$id";
 
 		if($db->query($query)){
 			$respons = ['status' => 'ok'];
 		}else{
-			$respons = ['status' => 'fail'];
+			$respons = ['status' => 'fail put'];
 		}
-
-		echo json_encode($respons);
+		return $respons;
 	}
 
-//delete fungerar
+
 	public function delete($url_parts, $data){
 		
 		$db = DB::getInstance();
@@ -133,7 +128,7 @@ class grades{
 		$id = $db->real_escape_string($data['id']);
 		$query = "
 			DELETE FROM grades 
-			WHERE id = $id";
+			WHERE id = ".$id;
 
 		if($db->query($query)){
 			$respons = ['status' => 'ok'];
@@ -141,7 +136,7 @@ class grades{
 			$respons = ['status' => 'fail'];
 		}
 
-		echo json_encode($respons);
+		return $respons;
 	}
 
 }

@@ -43,7 +43,7 @@ class courses{
 			return $this->getSingleCourse($url_parts);
 		}
 		elseif(count($url_parts)==2) {
-			return $this->getAllGradesInCourse($url_parts);
+			return $this->redirect($url_parts);
 		}
 		elseif(count($url_parts) == 3) {
 			return $this->redirect($url_parts);
@@ -68,7 +68,7 @@ class courses{
 			$courses[] = $item;
 		}
 		
-		return json_encode($courses);
+		return $courses;
 	}
 
 
@@ -89,7 +89,7 @@ class courses{
 		$result = $db->query($query);
 		$item = $result->fetch_assoc();
 		
-		return json_encode($item);
+		return $item;
 	}
 
 
@@ -134,7 +134,7 @@ class courses{
 			$courses[] = $item;
 		}
 		
-		return json_encode($courses);
+		return $courses;
 	}
 
 
@@ -152,7 +152,7 @@ class courses{
 		$result = $db->query($query);
 		$item = $result->fetch_assoc();
 		
-		return json_encode($item);
+		return $item;
 	}
 
 }//Close class
