@@ -1,9 +1,4 @@
 <?php
-//Wordpress security for plugin:
-//defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
-$outputHTML = "";
-
-
 
 function requestAPI(){
 
@@ -162,7 +157,7 @@ return $respons;
 	<?php
 		if (isset($_POST)) {
 			$respons = requestAPI();
-			echo $respons;
+			var_dump($respons);
 			// FOR USER 
 //if sats
 	//respons status okej
