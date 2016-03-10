@@ -1,0 +1,514 @@
+{
+	"id": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+	"name": "Qlokare_API",
+	"description": "API testing",
+	"order": [],
+	"folders": [
+		{
+			"id": "5b32fa41-6704-a091-c0a5-111276bc717a",
+			"name": "PUT",
+			"description": "PUT",
+			"order": [
+				"3f163eac-0743-8208-116f-fb78e25b6a48"
+			],
+			"owner": "371684",
+			"collectionId": "23087b72-409f-6048-20b7-331f7a52094c",
+			"requests": [
+				{
+					"id": "3f163eac-0743-8208-116f-fb78e25b6a48",
+					"headers": "",
+					"url": "http://192.168.33.14/api/?/grades/",
+					"pathVariables": {},
+					"preRequestScript": null,
+					"method": "PUT",
+					"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+					"data": [
+						{
+							"key": "id",
+							"value": "36",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "grade",
+							"value": "IG",
+							"type": "text",
+							"enabled": true
+						}
+					],
+					"dataMode": "urlencoded",
+					"name": "http://192.168.33.14/api/?/grades/",
+					"description": "PUT new grade value by id",
+					"descriptionFormat": "html",
+					"time": 1457464003716,
+					"version": 2,
+					"responses": [],
+					"tests": null,
+					"currentHelper": "normal",
+					"helperAttributes": "{}",
+					"synced": true,
+					"folder": "5b32fa41-6704-a091-c0a5-111276bc717a"
+				},
+				{
+					"id": "9936b671-74b4-8f89-42f9-047ba147b7bd",
+					"headers": "",
+					"url": "http://192.168.33.14/api/?/grades/",
+					"pathVariables": {},
+					"preRequestScript": null,
+					"method": "PUT",
+					"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+					"data": [
+						{
+							"key": "id",
+							"value": "33",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "grade",
+							"value": "IG",
+							"type": "text",
+							"enabled": true
+						}
+					],
+					"dataMode": "params",
+					"name": "http://192.168.33.14/api/?/grades/",
+					"description": "PUT",
+					"descriptionFormat": "html",
+					"time": 1457460913980,
+					"version": 2,
+					"responses": [],
+					"tests": null,
+					"currentHelper": "normal",
+					"helperAttributes": "{}",
+					"synced": true,
+					"collection": "23087b72-409f-6048-20b7-331f7a52094c",
+					"folder": "5b32fa41-6704-a091-c0a5-111276bc717a",
+					"owner": "371684"
+				}
+			]
+		},
+		{
+			"id": "00242007-ad0c-abf7-9dbd-a4853a8b56fd",
+			"name": "POST",
+			"description": "POST",
+			"order": [
+				"9ed17bbc-be79-1008-47d7-accbd4fde23f"
+			],
+			"owner": "371684",
+			"requests": [
+				{
+					"id": "9ed17bbc-be79-1008-47d7-accbd4fde23f",
+					"headers": "",
+					"url": "http://192.168.33.14/api/?/grades/",
+					"preRequestScript": null,
+					"pathVariables": {},
+					"method": "POST",
+					"data": [
+						{
+							"key": "student_id",
+							"value": "1",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "course_id",
+							"value": "1",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "grade",
+							"value": "MVG",
+							"type": "text",
+							"enabled": true
+						}
+					],
+					"dataMode": "urlencoded",
+					"tests": null,
+					"currentHelper": "normal",
+					"helperAttributes": "{}",
+					"time": 1457463880865,
+					"name": "http://192.168.33.14/api/?/grades/",
+					"description": "POST new grade",
+					"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+					"responses": [],
+					"synced": true,
+					"collection": "23087b72-409f-6048-20b7-331f7a52094c",
+					"folder": "00242007-ad0c-abf7-9dbd-a4853a8b56fd",
+					"owner": "371684"
+				}
+			]
+		},
+		{
+			"id": "aa045af5-420c-c22e-15ef-fc1e8eec36c4",
+			"name": "GET",
+			"description": "GET",
+			"order": [
+				"6a12873e-2dd2-4171-1129-a79f850a1469",
+				"fe67aaf3-2c67-6d4a-3e03-955b202930b5",
+				"5575c305-41a8-5bd7-5272-b2402e2e9cce",
+				"9a5891e7-05b8-ed34-25ea-87ceb8f2c958",
+				"76b2b292-c763-efaa-ade6-dec339a10677",
+				"1a8d0a2f-4180-27cd-3a1b-648dd2928265",
+				"264845ac-0270-bf4b-b4e5-8d066e58a09c",
+				"4042ea6b-0da7-c840-8f41-8b05418f6bb1",
+				"62284cb2-bb7d-d2cf-6286-33937645bdd6",
+				"98b25bbd-4338-4b4d-7b94-a64f31f1894f",
+				"b55bd624-0d5c-2072-20a9-478bc8b615e2",
+				"d8a286fe-b0bd-c459-e4dd-fafa72623728"
+			],
+			"owner": "371684"
+		},
+		{
+			"id": "95b4cc42-f98b-73eb-55a1-f112994a5c1e",
+			"name": "DELETE",
+			"description": "DELETE",
+			"order": [
+				"f080976f-addc-0631-3ee3-193eddf14a7f"
+			],
+			"owner": "371684"
+		}
+	],
+	"timestamp": 1457459661875,
+	"owner": "371684",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "1a8d0a2f-4180-27cd-3a1b-648dd2928265",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/students/1/courses/2",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596501294,
+			"name": "http://192.168.33.14/api/?/students/1/courses/2",
+			"description": "GET student 1s course2s name",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "264845ac-0270-bf4b-b4e5-8d066e58a09c",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/students/1/courses/2/grades",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457529611682,
+			"name": "http://192.168.33.14/api/?/students/1/courses/2/grades",
+			"description": "GET grade for student 1 in course 2",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "3f163eac-0743-8208-116f-fb78e25b6a48",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/grades/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [
+				{
+					"key": "id",
+					"value": "36",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "grade",
+					"value": "IG",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "student_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "course_id",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596446993,
+			"name": "http://192.168.33.14/api/?/grades/",
+			"description": "PUT new grade value by id",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "4042ea6b-0da7-c840-8f41-8b05418f6bb1",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/courses/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596477862,
+			"name": "http://192.168.33.14/api/?/courses/",
+			"description": "GET all courses",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "5575c305-41a8-5bd7-5272-b2402e2e9cce",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/students/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596515599,
+			"name": "http://192.168.33.14/api/?/students/",
+			"description": "Get All Students",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "62284cb2-bb7d-d2cf-6286-33937645bdd6",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/courses/1/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596472402,
+			"name": "http://192.168.33.14/api/?/courses/1/",
+			"description": "GET course 1",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "6a12873e-2dd2-4171-1129-a79f850a1469",
+			"headers": "id: \n",
+			"url": "http://192.168.33.14/api/?/grades/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596524747,
+			"name": "http://192.168.33.14/api/?/grades/",
+			"description": "all grades",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "76b2b292-c763-efaa-ade6-dec339a10677",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/students/1/courses/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596505939,
+			"name": "http://192.168.33.14/api/?/students/1/courses/",
+			"description": "Get student 1s courses",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "98b25bbd-4338-4b4d-7b94-a64f31f1894f",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/courses/1/students/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596467869,
+			"name": "http://192.168.33.14/api/?/courses/1/students/",
+			"description": "GET all students in course 1",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "9a5891e7-05b8-ed34-25ea-87ceb8f2c958",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/students/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596510961,
+			"name": "http://192.168.33.14/api/?/students/1",
+			"description": "GET student 1",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "9ed17bbc-be79-1008-47d7-accbd4fde23f",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/grades/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "student_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "course_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "grade",
+					"value": "MVG",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596454164,
+			"name": "http://192.168.33.14/api/?/grades/",
+			"description": "POST new grade",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "b55bd624-0d5c-2072-20a9-478bc8b615e2",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/courses/1/students/2/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596463433,
+			"name": "http://192.168.33.14/api/?/courses/1/students/1/",
+			"description": "GET student 1 from course 1",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "d8a286fe-b0bd-c459-e4dd-fafa72623728",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/courses/1/students/2/grades",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596459107,
+			"name": "http://192.168.33.14/api/?/courses/1/students/1/grades",
+			"description": "GET grade for student 1 in course 1",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "f080976f-addc-0631-3ee3-193eddf14a7f",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/grades/",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [
+				{
+					"key": "id",
+					"value": "51",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596546764,
+			"name": "http://192.168.33.14/api/?/grades/",
+			"description": "DELETE by grade id",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		},
+		{
+			"id": "fe67aaf3-2c67-6d4a-3e03-955b202930b5",
+			"headers": "",
+			"url": "http://192.168.33.14/api/?/grades/35",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1457596520094,
+			"name": "http://192.168.33.14/api/?/grades/33",
+			"description": "Get single grade by grade id",
+			"collectionId": "f85bdc03-9f9d-bffd-d89f-c323a6a21b4b",
+			"responses": []
+		}
+	]
+}
