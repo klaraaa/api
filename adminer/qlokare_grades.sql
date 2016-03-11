@@ -33,7 +33,7 @@ INSERT INTO `grades` (`id`, `student_id`, `course_id`, `grade`) VALUES
 (35,	2,	1,	'VG'),
 (36,	1,	2,	'IG'),
 (50,	3,	2,	'IG'),
-(51,	4,	1,	'G');
+(52,	3,	2,	'IG');
 
 DROP TABLE IF EXISTS `students`;
 CREATE TABLE `students` (
@@ -47,4 +47,4 @@ INSERT INTO `students` (`id`, `firstname`, `lastname`) VALUES
 (1,	'Klara',	'Köllerström'),
 (2,	'Sandra',	'Bothen');
 
--- 2016-03-10 07:52:33
+-- 2016-03-11 11:51:48
